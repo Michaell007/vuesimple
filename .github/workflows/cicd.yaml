@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to Docker Hub
+name: Deploy to Kubernetes
 
 on:
   push:
@@ -8,14 +8,15 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
 jobs:
-  build-and-push:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Build Docker image
         run: docker build -t yaps/vuesimple .
 
@@ -28,5 +29,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: docker push yaps/vuesimple:latest
 
-
-
+      - name: Update Kubernetes deployment
+        uses: appleboy/kubectl-action@master
+        with:
+          args: set image deployment/site-app sitesimpl=yaps/vuesimple:latest
