@@ -30,7 +30,6 @@ jobs:
         run: docker push yaps/vuesimple:latest
 
       - name: Update Kubernetes deployment
-        
         uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
