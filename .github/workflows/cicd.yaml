@@ -30,6 +30,9 @@ jobs:
         run: docker push yaps/vuesimple:latest
 
       - name: Update Kubernetes deployment
-        uses: appleboy/kubectl-action@v1
+        
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
         with:
           args: set image deployment/site-app sitesimpl=yaps/vuesimple:latest
