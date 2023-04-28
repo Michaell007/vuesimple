@@ -32,17 +32,12 @@ jobs:
         with:
           push: true
           tags: yaps/vuesimple:latest
-      
-      - 
-        name: Kubernetes set config
-        uses: actions-hub/kubectl@master
+      -
+        name: Trigger deploy
+        uses: Consensys/kubernetes-action@master
         env:
-          KUBE_CONFIG: ${{ secrets.KUBECONFIG  }}
-
-      - 
-        name: Set action on cluster k8s
-        uses: actions-hub/kubectl@master
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
         with:
-          args: get pods
+          args: get deploy
           
           
