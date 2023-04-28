@@ -38,6 +38,6 @@ jobs:
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
         with:
-          args: get deploy
+          args: rollout restart deployment site-app -n default
           
           
