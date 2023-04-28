@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Learning K8s in k3s"/>
+  <HelloWorld msg="Gloire a Dieu je commence a maitriser K3s"/>
 </template>
 
 <script>
