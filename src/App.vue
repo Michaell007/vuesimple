@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Petit a petit poulet devient ..."/>
+  <HelloWorld msg="Scofield Michael ..."/>
 </template>
 
 <script>
